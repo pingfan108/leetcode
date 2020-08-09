@@ -1,2 +1,6 @@
-# leetcode
-记录自己在LeetCode刷题的进展
+# About
+记录自己在LeetCode做算法题的进展.
+
+# Language
+* 鉴于目前工作中主要以C/C++为主, master分支中默认以C++语言书写题解;
+* 时间富余的情况下, 也会补充基于其它语言书写的题解, 可通过切换到相应branch查看.
