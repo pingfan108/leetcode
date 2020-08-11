@@ -1,5 +1,6 @@
 /*
-95. 不同的二叉搜索树 II
+# 95. 不同的二叉搜索树 II
+https://leetcode-cn.com/problems/unique-binary-search-trees-ii/
 
 给定一个整数 n，生成所有由 1 ... n 为节点所组成的 二叉搜索树 。
 
@@ -23,6 +24,7 @@
     提示：
 0 <= n <= 8
  */
+#include "tree.h"
 
 // 解法1: 递归求解
 class Solution {
@@ -65,11 +67,14 @@ public:
 };
 
 // 解法2: 动态规划
-// 参考: https://leetcode-cn.com/problems/unique-binary-search-trees-ii/solution/xiang-xi-tong-su-de-si-lu-fen-xi-duo-jie-fa-by-2-7/
+// 思路:
+// * 参考, https://leetcode-cn.com/problems/unique-binary-search-trees-ii/solution/xiang-xi-tong-su-de-si-lu-fen-xi-duo-jie-fa-by-2-7/
 class Solution {
 public:
     vector<TreeNode*> generateTrees(int n) {
-        if (n == 0) return {};  // 其实我感觉不用, 但是这样写才能通过n==0的测试用例
+        if (n == 0) {
+            return {};  // 其实我感觉不用, 但是这样写才能通过n==0的测试用例
+        }
 
         //// Step1: 创建状态转移数组, dp[i]表示由[1,i]为节点所组成的BST集合
         std::vector<std::vector<TreeNode*> > dp(n+1);

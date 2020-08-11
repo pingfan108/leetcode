@@ -1,5 +1,6 @@
 /*
-25. K 个一组翻转链表
+# 25. K 个一组翻转链表
+https://leetcode-cn.com/problems/reverse-nodes-in-k-group/
 
 给你一个链表，每 k 个节点一组进行翻转，请你返回翻转后的链表。
 k 是一个正整数，它的值小于或等于链表的长度。
@@ -17,6 +18,12 @@ k 是一个正整数，它的值小于或等于链表的长度。
 #include "list.h"
 
 // 解法1: 循环迭代
+// 思路:
+// * 每1轮从当前节点开始, 往后取最多k个节点, 作为1个group;(使用两个额外的指针,
+//   分别记录上一个group的尾节点和下一个group的头节点)
+// * 若当前group取够了k个节点, 对当前group内节点组成的子链表做单链表翻转; 反之,
+//   当前group保持原有顺序即可; 将当前group处理后的结果拼接到上一个group后面;
+// * 继续处理下一个group, 直到结束.
 class Solution {
 public:
     ListNode* reverseKGroup(ListNode* head, int k) {
@@ -37,9 +44,11 @@ public:
             // Step2: 针对当前group直接做单链表翻转, 并处理翻转后的结果
             auto temp = reverseOneGroup(curr);
             if (pgTail != NULL) {
-                pgTail->next = temp;  // 这是中间的group, 接到上一个group尾节点后
+                // 这是中间的group, 接到上一个group尾节点后
+                pgTail->next = temp;
             } else {
-                newH = temp;          // 这是第一个group, 记录翻转完成后新链表的头节点
+                // 这是第一个group, 记录翻转完成后新链表的头节点
+                newH = temp;
             }
             // Step3: 流转到下一个group
             pgTail = curr;

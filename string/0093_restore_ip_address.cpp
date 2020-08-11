@@ -1,5 +1,6 @@
 /*
-93. 复原IP地址
+# 93. 复原IP地址
+https://leetcode-cn.com/problems/restore-ip-addresses/
 
 给定一个只包含数字的字符串，复原它并返回所有可能的 IP 地址格式。
 有效的 IP 地址正好由四个整数（每个整数位于 0 到 255 之间组成），整数之间用 '.' 分隔。
@@ -9,8 +10,12 @@
 输出: ["255.255.11.135", "255.255.111.35"]
  */
 
-// 解法1: 暴力美学解法
-// 参考, https://leetcode-cn.com/problems/restore-ip-addresses/solution/ke-neng-shi-zui-you-mei-de-bao-li-jie-fa-liao-by-u/
+// 解法1: 暴力美学三重奏
+// 思路:
+// * 组成有效IP地址的四个子字符串长度只能是在[1,3]之间. 暴力尝试所有可能的长度,
+//   再将其中无效的组合(结果长度和原始字符串长度不匹配, 超出255范围等)筛掉即可.
+// * 虽然是三重循环(原题解中是四重循环), 但循环次数恒定, 时间复杂度为O(1).
+// * 参考, https://leetcode-cn.com/problems/restore-ip-addresses/solution/ke-neng-shi-zui-you-mei-de-bao-li-jie-fa-liao-by-u/
 class Solution {
 public:
     vector<string> restoreIpAddresses(string s) {

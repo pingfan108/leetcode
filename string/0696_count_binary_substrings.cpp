@@ -1,5 +1,6 @@
 /*
-696. 计数二进制子串
+# 696. 计数二进制子串
+https://leetcode-cn.com/problems/count-binary-substrings/
 
 给定一个字符串 s，计算具有相同数量0和1的非空(连续)子字符串的数量，并且这些子字符串中的所有0和所有1都是组合在一起的。
 重复出现的子串要计算它们出现的次数。
@@ -20,27 +21,29 @@ s.length 在1到50,000之间。
 s 只包含“0”或“1”字符。
  */
 
-// 思路1: 按字符分组
+// 解法1. 按字符分组
+// 思路:
+// * 将字符串中连续相同的字符(长度>=1)分为一组, 相邻两组必然有0|1跳变;
+// * 相邻两组中符合条件的子串数等于两个组长度的相对更小值;
+// * 遍历所有相邻组, 将符合条件的子串数累加即可得到结果.
 class Solution {
 public:
     int countBinarySubstrings(string s) {
-        // 特殊case: 给定字符串长度小于2(1|0有一个没有出现)
+        // 特殊case: 给定字符串长度小于2
         if (s.length() < 2) {
-            return 0;
+            return 0;  // 长度不足2, 不是缺1就是少0
         }
 
         // 一般case: 给定字符串长度不小于2
         int res = 0;
         int prevCnt = 0;  // 上一组连续相同字符的数量
-        int currCnt = 1;  // 当前组连续相同字符的数量(遍历时跳过第1个字符, 需要初始化为1)
+        int currCnt = 1;  // 当前组连续相同字符的数量(遍历时会跳过第1个字符)
         for (int i = 1; i <= s.length(); i++) {
-            if (s[i] != s[i-1] || i == s.length()) {
-                // 找到了0|1突变的点, 或者字符串结尾
-                res += std::min(prevCnt, currCnt);  // 相邻两组中符合条件的子串数等于二者长度最小值
+            if (s[i] != s[i-1]) {  // 找到了0|1跳变or字符串结尾('\0'也是跳变)
+                res += std::min(prevCnt, currCnt);
                 prevCnt = currCnt;
                 currCnt = 1;
-            } else {
-                // 仍是连续相同字符, 计数器自增即可
+            } else {               // 仍是连续相同字符, 计数器自增即可
                 currCnt++;
             }
         }
