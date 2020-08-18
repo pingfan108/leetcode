@@ -24,7 +24,7 @@ https://leetcode-cn.com/problems/unique-binary-search-trees-ii/
     提示：
 0 <= n <= 8
  */
-#include "tree.h"
+#include "include/tree.h"
 
 // 解法1: 递归求解
 class Solution {

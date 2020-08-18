@@ -15,7 +15,7 @@ https://leetcode-cn.com/problems/binary-tree-inorder-traversal/
 	进阶: 
 递归算法很简单，你可以通过迭代算法完成吗？
  */
-#include "tree.h"
+#include "include/tree.h"
 
 // 解法1: 基于调用栈递归实现
 class Solution {

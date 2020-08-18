@@ -26,7 +26,7 @@ https://leetcode-cn.com/problems/balanced-binary-tree/
  4   4
 返回 false 。
  */
-#include "tree.h"
+#include "include/tree.h"
 
 // 解法1: 递归遍历求解
 // 思路:
