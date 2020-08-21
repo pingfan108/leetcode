@@ -2,10 +2,9 @@
 # 104. 二叉树的最大深度
 https://leetcode-cn.com/problems/maximum-depth-of-binary-tree/
 
-给定一个二叉树，找出其最大深度。二叉树的深度为根节点到最远叶子节点的最长路径上的节点数。
-
-	说明: 
-叶子节点是指没有子节点的节点。
+给定一个二叉树，找出其最大深度。
+二叉树的深度为根节点到最远叶子节点的最长路径上的节点数。
+说明: 叶子节点是指没有子节点的节点。
 
 	示例：
 给定二叉树 [3,9,20,null,null,15,7]，
@@ -23,10 +22,11 @@ class Solution {
 public:
     int maxDepth(TreeNode* root) {
         if (root == NULL) {
-            return 0;
+            return 0;  // 空二叉树
         }
-        int lDepth = maxDepth(root->left);
-        int rDepth = maxDepth(root->right);
+
+        int lDepth = maxDepth(root->left);   // 递归求左子树的最大深度
+        int rDepth = maxDepth(root->right);  // 递归求右子树的最大深度
         return std::max(lDepth, rDepth) + 1;
     }
 };
