@@ -28,7 +28,7 @@ https://leetcode-cn.com/problems/validate-binary-search-tree/
  */
 #include "include/tree.h"
 
-// 解法1: 中序遍历 + prev
+// 解法1: 中序遍历 + prev指针
 // 思路:
 // * 一棵BST的中序遍历的结果应该是一个单调递增且无重复元素(题目描述保证)的数组;
 // * 对输入二叉树做中序遍历, 遍历过程中用一个额外的指针记录前一个节点取值, 比较
