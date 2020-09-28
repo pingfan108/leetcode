@@ -21,6 +21,8 @@ https://leetcode-cn.com/problems/binary-tree-level-order-traversal/
 节点总数 <= 1000
  */
 
+#include "include/tree.h"
+
 // 解法1: BFS(标记层次)
 // 思路:
 // * 基于队列的朴素BFS可完成层序遍历, 但遍历结果是一个一维数组，无法区分每一层,
