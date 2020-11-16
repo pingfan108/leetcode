@@ -1,0 +1,53 @@
+/*
+# 402. 移掉K位数字
+https://leetcode-cn.com/problems/remove-k-digits/
+
+给定一个以字符串表示的非负整数 num，移除这个数中的 k 位数字，使得剩下的数字最小。
+    注意:
+num 的长度小于 10002 且 ≥ k。
+num 不会包含任何前导零。
+
+    示例 1 :
+输入: num = "1432219", k = 3
+输出: "1219"
+解释: 移除掉三个数字 4, 3, 和 2 形成一个新的最小的数字 1219。
+    示例 2 :
+输入: num = "10200", k = 1
+输出: "200"
+解释: 移掉首位的 1 剩下的数字为 200. 注意输出不能有任何前导零。
+    示例 3 :
+输入: num = "10", k = 2
+输出: "0"
+解释: 从原数字移除所有的数字，剩余为空就是0。
+ */
+
+// 解法1: 单调栈
+class Solution {
+public:
+    string removeKdigits(string num, int k) {
+        // 从左至右遍历, 借用单调栈将所有不满足单调递增的元素移除
+        std::vector<char> tmp;  // 用数组模拟栈, 方便最后一步拼接
+        for (char &c : num) {
+            while (k && tmp.size() && tmp.back() > c) {
+                // 找到违反单调递增的元素, 剔除
+                tmp.pop_back();
+                k--;
+            }
+            tmp.push_back(c);
+        }
+        // 不满足单调递增的元素不足k个, 还需移除尾部的元素, 凑足k个
+        while (k--) {
+            tmp.pop_back();
+        }
+
+        // 将剩下的元素拼接成新的字符串
+        std::string res;
+        for (char &c : tmp) {
+            if (res.empty() && c == '0') {
+                continue;  // 过滤前导零
+            }
+            res.push_back(c);
+        }
+        return res.empty() ? "0" : res;
+    }
+};
