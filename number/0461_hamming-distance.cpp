@@ -18,7 +18,7 @@ https://leetcode-cn.com/problems/hamming-distance/
 上面的箭头指出了对应二进制位不同的位置。
  */
 
-// 解法1: 异或 + Brian Kernigham算法
+// 解法1: 位运算 + Brian Kernigham算法
 // 思路:
 // * 汉明距离 == 两数对应二进制位不同的位置数 == 两数按位异或的结果中1的个数;
 // * Brian Kernigham算法可以快速清除一个二进制数最右边的1, 循环调用该算法将一个
