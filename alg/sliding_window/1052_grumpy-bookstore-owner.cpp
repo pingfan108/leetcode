@@ -1,0 +1,1 @@
+../../array/1052_grumpy-bookstore-owner.cpp
