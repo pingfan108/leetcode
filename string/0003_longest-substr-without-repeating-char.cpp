@@ -38,7 +38,7 @@ public:
         //// 一般case: 滑动窗口+哈希表
         int fast = 0, slow = 0;         // 用作窗口左右边界的快慢指针
         std::unordered_set<char> dict;  // 记录窗口中已出现字符的哈希表
-        int maxLen = 0;                 // 记录窗口滑动过程中的最大长度
+        int maxLen = 0;                 // 记录窗口滑动过程中的最大合法长度
         // 外循环完成快指针(窗口右边界)的滑动
         for (; fast < s.length(); fast++) {
             if (dict.find(s[fast]) != dict.end()) {
